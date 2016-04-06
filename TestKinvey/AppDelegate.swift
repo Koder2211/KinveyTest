@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KCSPing.pingKinveyWithBlock { (result: KCSPingResult!) -> Void in
             if result.pingWasSuccessful {
                 NSLog("Kinvey Ping Success")
-                KCSPush.sharedPush().setPushBadgeNumber(100)
+               // KCSPush.sharedPush().setPushBadgeNumber(100)
             } else {
                 NSLog("Kinvey Ping Failed")
             }
