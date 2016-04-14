@@ -11,11 +11,14 @@ import Foundation
 class JobRole : NSObject {    //all NSObjects in Kinvey implicitly implement KCSPersistable
     var entityId: String? //Kinvey entity _id
     var name: String?
+    var date: NSDate?
     
     override func hostToKinveyPropertyMapping() -> [NSObject : AnyObject]! {
         return [
             "entityId" : KCSEntityKeyId, //the required _id field
             "name" : "name",
+            "date" : "date",
+            
         ]
     }
 }

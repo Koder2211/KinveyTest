@@ -13,6 +13,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tblView: UITableView!
      var jobRoles:[AnyObject] = []
+    var uploadID:String = ""
+   
+ 
+    @IBOutlet weak var imgView2: UIImageView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,10 +98,38 @@ class ViewController: UIViewController {
                     //hide log-in view and show main app content
                     KCSUser.activeUser()
                     
-                    self.updatePersonalProfileToKinvey()
+                    
+                    self.updateImage()
+                    //self.updatePersonalProfileToKinvey()
+                    //self.downloadImage()
                     
                     let collection = KCSCollection(fromString: "Job-Roles", ofClass: JobRole.self)
                     let store = KCSAppdataStore(collection: collection, options: nil)
+                    
+                    let store1 = KCSAppdataStore.storeWithOptions([
+                        KCSStoreKeyCollectionName : "Job-Roles",
+                        KCSStoreKeyCollectionTemplateClass : JobRole.self
+                        ])
+                    
+                    let jobRole1 = JobRole()
+                    jobRole1.name = "MyJobSantosh4"
+                    jobRole1.date = NSDate(timeIntervalSince1970: 1352149171)
+                    
+                    store1.saveObject(
+                        jobRole1,
+                        withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+                            if errorOrNil != nil {
+                                //save failed
+                                NSLog("Save failed, with error: %@", errorOrNil.localizedFailureReason!)
+                            } else {
+                                //save was successful
+                                NSLog("Successfully saved event (id='%@').", (objectsOrNil[0] as! NSObject).kinveyObjectId())
+                            }
+                        },
+                        withProgressBlock: nil
+                    )
+
+                    
                     
                     store.queryWithQuery(
                         KCSQuery(),
@@ -107,8 +140,9 @@ class ViewController: UIViewController {
                                 self.jobRoles = objectsOrNil
                                 self.tblView .reloadData()
                                 for var i = 0; i < self.jobRoles.count ; ++i {
-                                    let name = self.jobRoles[i].name
-                                    NSLog("Job-Role is : %@", name!)
+                                    let jobrl = self.jobRoles[i]
+                                    
+                                    NSLog("Job-Role is : %@", jobrl.name)
                                     
                                 }
                             } else {
@@ -124,6 +158,84 @@ class ViewController: UIViewController {
             }
         )
         
+        
+    }
+    
+    func downloadImage()
+    {
+        let attrib = "texture1.png"
+        
+        let pngQuery = KCSQuery(onField: KCSFileFileName, withExactMatchForValue: attrib as! NSObject)
+        
+        
+        
+        
+        
+        KCSFileStore.downloadFileByQuery(pngQuery,
+                                         requestConfiguration: nil,
+                                         completionBlock: { (downloadedResources: [AnyObject]!, error: NSError!) -> Void in
+                                            if error == nil {
+                                                
+                                                
+                                                //extract just the Value field from the entities
+                                                
+                                                
+                                                let file = downloadedResources[0] as! KCSFile
+                                                
+                                                let fileURL = file.localURL
+                                                let image = UIImage(contentsOfFile: fileURL.path!)
+                                                
+                                                self.imgView2.image = image
+                                                print(file.localURL)
+                                                
+                                            } else {
+                                                print("Got an error: ", error)
+                                            }
+            },
+                                         progressBlock: nil
+        )
+        
+        
+    }
+    
+    func updateImage()
+    {
+        //let image = UIImage(named: "example.png")
+        let data = UIImageJPEGRepresentation(UIImage(named: "reminder152.png")!,0.9) //convert to a 90% quality jpeg
+        
+        
+        KCSFileStore.uploadData(data,
+                                options: [
+                                    KCSFileFileName : "texture1.png",
+                                    KCSFileMimeType : "image/png",
+                                    
+                                    
+            ],
+                                completionBlock: { (uploadInfo: KCSFile!, error: NSError!) -> Void in
+                                    
+                                    
+                                    //self.assignProfilePictureIdToUser(KCSUser.activeUser(), picture: uploadInfo)
+                                    self.uploadID = uploadInfo.kinveyObjectId()
+                                    //KCSUser.activeUser().setValue(uploadInfo.kinveyObjectId(), forAttribute: "usename")
+                                    
+                                    
+                                    self.downloadImage()
+                                    
+                                    
+                                    
+            },
+                                progressBlock: { (objects: [AnyObject]!, percentComplete: Double) -> Void in
+            }
+        )
+    }
+    
+    func queryUser()
+    {
+        let user1: KCSUser
+        user1 = KCSUser.activeUser()
+        
+        let query: KCSQuery
+        //query.addQueryOnField("username", withExactMatchForValue: "test123")
         
     }
     
@@ -194,8 +306,8 @@ class ViewController: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell:UITableViewCell = self.tblView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
-        let name = self.jobRoles[indexPath.row].name
-        cell.textLabel?.text = name
+        let jobrl2 = self.jobRoles[indexPath.row]
+        cell.textLabel?.text = jobrl2.name
         
         return cell
     }
