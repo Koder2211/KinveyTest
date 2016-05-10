@@ -16,13 +16,19 @@
 		5A08DC1D1CABCE64006C709F /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A08DC1A1CABCE64006C709F /* Accounts.framework */; };
 		5A08DC1E1CABCE64006C709F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A08DC1B1CABCE64006C709F /* CoreGraphics.framework */; };
 		5A08DC1F1CABCE64006C709F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A08DC1C1CABCE64006C709F /* CoreLocation.framework */; };
-		5A08DC211CABCE76006C709F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A08DC201CABCE76006C709F /* libsqlite3.0.tbd */; };
 		5A08DC231CABCE8C006C709F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A08DC221CABCE8C006C709F /* MobileCoreServices.framework */; };
 		5A08DC251CABCE95006C709F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A08DC241CABCE95006C709F /* Security.framework */; };
 		5A08DC271CABCE9D006C709F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A08DC261CABCE9D006C709F /* Social.framework */; };
 		5A08DC291CABCEAC006C709F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A08DC281CABCEAC006C709F /* SystemConfiguration.framework */; };
 		5A08DC2B1CABCEBA006C709F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A08DC2A1CABCEBA006C709F /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5A08DC2E1CABD4FA006C709F /* JobRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A08DC2D1CABD4FA006C709F /* JobRole.swift */; };
+		5AACD38A1CBEAC7000396A0B /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AACD3891CBEAC7000396A0B /* texture.png */; };
+		5AACD38C1CBEB79000396A0B /* reminder152.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AACD38B1CBEB79000396A0B /* reminder152.png */; };
+		5AACD3DF1CD09D2100396A0B /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A08DC201CABCE76006C709F /* libsqlite3.0.tbd */; };
+		5AACD3E41CD110E300396A0B /* Coach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AACD3E01CD110E300396A0B /* Coach.swift */; };
+		5AACD3E51CD110E300396A0B /* Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AACD3E11CD110E300396A0B /* Parent.swift */; };
+		5AACD3E61CD110E300396A0B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AACD3E21CD110E300396A0B /* Session.swift */; };
+		5AACD3E71CD110E300396A0B /* TrainingSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AACD3E31CD110E300396A0B /* TrainingSessionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +51,12 @@
 		5A08DC2A1CABCEBA006C709F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5A08DC2C1CABD02A006C709F /* TestKinvey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestKinvey-Bridging-Header.h"; sourceTree = "<group>"; };
 		5A08DC2D1CABD4FA006C709F /* JobRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobRole.swift; sourceTree = "<group>"; };
+		5AACD3891CBEAC7000396A0B /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
+		5AACD38B1CBEB79000396A0B /* reminder152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reminder152.png; sourceTree = "<group>"; };
+		5AACD3E01CD110E300396A0B /* Coach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coach.swift; sourceTree = "<group>"; };
+		5AACD3E11CD110E300396A0B /* Parent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parent.swift; sourceTree = "<group>"; };
+		5AACD3E21CD110E300396A0B /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		5AACD3E31CD110E300396A0B /* TrainingSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSessionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,12 +64,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AACD3DF1CD09D2100396A0B /* libsqlite3.0.tbd in Frameworks */,
 				5A08DC2B1CABCEBA006C709F /* WebKit.framework in Frameworks */,
 				5A08DC291CABCEAC006C709F /* SystemConfiguration.framework in Frameworks */,
 				5A08DC271CABCE9D006C709F /* Social.framework in Frameworks */,
 				5A08DC251CABCE95006C709F /* Security.framework in Frameworks */,
 				5A08DC231CABCE8C006C709F /* MobileCoreServices.framework in Frameworks */,
-				5A08DC211CABCE76006C709F /* libsqlite3.0.tbd in Frameworks */,
 				5A08DC1D1CABCE64006C709F /* Accounts.framework in Frameworks */,
 				5A08DC1E1CABCE64006C709F /* CoreGraphics.framework in Frameworks */,
 				5A08DC1F1CABCE64006C709F /* CoreLocation.framework in Frameworks */,
@@ -96,6 +108,10 @@
 		5A08DC051CABCD4F006C709F /* TestKinvey */ = {
 			isa = PBXGroup;
 			children = (
+				5AACD3E01CD110E300396A0B /* Coach.swift */,
+				5AACD3E11CD110E300396A0B /* Parent.swift */,
+				5AACD3E21CD110E300396A0B /* Session.swift */,
+				5AACD3E31CD110E300396A0B /* TrainingSessionManager.swift */,
 				5A08DC061CABCD4F006C709F /* AppDelegate.swift */,
 				5A08DC081CABCD4F006C709F /* ViewController.swift */,
 				5A08DC0A1CABCD4F006C709F /* Main.storyboard */,
@@ -105,6 +121,8 @@
 				5A08DC181CABCDB1006C709F /* KinveyKit.framework */,
 				5A08DC2C1CABD02A006C709F /* TestKinvey-Bridging-Header.h */,
 				5A08DC2D1CABD4FA006C709F /* JobRole.swift */,
+				5AACD38B1CBEB79000396A0B /* reminder152.png */,
+				5AACD3891CBEAC7000396A0B /* texture.png */,
 			);
 			path = TestKinvey;
 			sourceTree = "<group>";
@@ -168,9 +186,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AACD38C1CBEB79000396A0B /* reminder152.png in Resources */,
 				5A08DC111CABCD4F006C709F /* LaunchScreen.storyboard in Resources */,
 				5A08DC0E1CABCD4F006C709F /* Assets.xcassets in Resources */,
 				5A08DC0C1CABCD4F006C709F /* Main.storyboard in Resources */,
+				5AACD38A1CBEAC7000396A0B /* texture.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,9 +201,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AACD3E41CD110E300396A0B /* Coach.swift in Sources */,
+				5AACD3E71CD110E300396A0B /* TrainingSessionManager.swift in Sources */,
 				5A08DC2E1CABD4FA006C709F /* JobRole.swift in Sources */,
+				5AACD3E61CD110E300396A0B /* Session.swift in Sources */,
 				5A08DC091CABCD4F006C709F /* ViewController.swift in Sources */,
 				5A08DC071CABCD4F006C709F /* AppDelegate.swift in Sources */,
+				5AACD3E51CD110E300396A0B /* Parent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,8 +250,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Santosh Surve (G79S48QSTM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Santosh Surve (G79S48QSTM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Santosh Surve (UX3QA9NYTC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Santosh Surve (UX3QA9NYTC)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -249,7 +273,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "d2574673-8df5-45b4-afac-bbc9461b9951";
+				PROVISIONING_PROFILE = "19660c28-999a-4c88-96ca-ab911c813d66";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -273,8 +297,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Santosh Surve (G79S48QSTM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Santosh Surve (G79S48QSTM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Santosh Surve (UX3QA9NYTC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Santosh Surve (UX3QA9NYTC)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -289,7 +313,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "d2574673-8df5-45b4-afac-bbc9461b9951";
+				PROVISIONING_PROFILE = "19660c28-999a-4c88-96ca-ab911c813d66";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -307,6 +331,7 @@
 					"$(PROJECT_DIR)/TestKinvey",
 				);
 				INFOPLIST_FILE = TestKinvey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mindscrub.TestKinvey;
@@ -327,6 +352,7 @@
 					"$(PROJECT_DIR)/TestKinvey",
 				);
 				INFOPLIST_FILE = TestKinvey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mindscrub.TestKinvey;

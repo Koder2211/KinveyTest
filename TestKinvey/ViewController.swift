@@ -6,7 +6,12 @@
 //  Copyright © 2016 mindscrub. All rights reserved.
 //
 
+
+
+
+
 import UIKit
+import MapKit
 
 
 class ViewController: UIViewController {
@@ -21,6 +26,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        var map: MKMapItem;
+        
+        var data: NSKeyedArchiver;
+//        NSString *filename = [NSHomeDirectory() stringByAppendingString:@"/Documents/albums.bin"];
+//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:albums];
+//        [data writeToFile:filename atomically:YES];
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
        
         self.tblView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -90,8 +103,8 @@ class ViewController: UIViewController {
 
         
         KCSUser.loginWithUsername(
-            "test123",
-            password: "test123",
+            "mind1",
+            password: "mind1",
             withCompletionBlock: { (user: KCSUser!, errorOrNil: NSError!, result: KCSUserActionResult) -> Void in
                 if errorOrNil == nil {
                     //the log-in was successful and the user is now the active user and credentials saved
@@ -99,58 +112,83 @@ class ViewController: UIViewController {
                     KCSUser.activeUser()
                     
                     
+                    //let tm = TrainingSessionManager()
+                    //TrainingSessionManager.getSessionsForExtendedUser()
+                
+                    //self.deleteFile()
+                    //self.downloadImage()
                     self.updateImage()
+                    //self.fetchImages()
                     //self.updatePersonalProfileToKinvey()
                     //self.downloadImage()
                     
-                    let collection = KCSCollection(fromString: "Job-Roles", ofClass: JobRole.self)
-                    let store = KCSAppdataStore(collection: collection, options: nil)
+//                    let collection = KCSCollection(fromString: "Job-Roles", ofClass: JobRole.self)
+//                    let store = KCSAppdataStore(collection: collection, options: nil)
+//                    
+//                    let store1 = KCSAppdataStore.storeWithOptions([
+//                        KCSStoreKeyCollectionName : "Job-Roles",
+//                        KCSStoreKeyCollectionTemplateClass : JobRole.self
+//                        ])
+//                    
+//                    let jobRole1 = JobRole()
+//                    jobRole1.name = "MyJobSantosh4"
+//                    jobRole1.date = NSDate(timeIntervalSince1970: 1352149171)
                     
-                    let store1 = KCSAppdataStore.storeWithOptions([
-                        KCSStoreKeyCollectionName : "Job-Roles",
-                        KCSStoreKeyCollectionTemplateClass : JobRole.self
-                        ])
-                    
-                    let jobRole1 = JobRole()
-                    jobRole1.name = "MyJobSantosh4"
-                    jobRole1.date = NSDate(timeIntervalSince1970: 1352149171)
-                    
-                    store1.saveObject(
-                        jobRole1,
-                        withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
-                            if errorOrNil != nil {
-                                //save failed
-                                NSLog("Save failed, with error: %@", errorOrNil.localizedFailureReason!)
-                            } else {
-                                //save was successful
-                                NSLog("Successfully saved event (id='%@').", (objectsOrNil[0] as! NSObject).kinveyObjectId())
-                            }
-                        },
-                        withProgressBlock: nil
-                    )
-
-                    
-                    
-                    store.queryWithQuery(
-                        KCSQuery(),
-                        withCompletionBlock: {
-                            (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
-                            if errorOrNil == nil {
-                                NSLog("successfully loaded objects: %@", objectsOrNil)
-                                self.jobRoles = objectsOrNil
-                                self.tblView .reloadData()
-                                for var i = 0; i < self.jobRoles.count ; ++i {
-                                    let jobrl = self.jobRoles[i]
-                                    
-                                    NSLog("Job-Role is : %@", jobrl.name)
-                                    
-                                }
-                            } else {
-                                NSLog("error occurred: %@", errorOrNil)
-                            }
-                        },
-                        withProgressBlock: nil
-                    )
+//                    store1.saveObject(
+//                        jobRole1,
+//                        withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+//                            if errorOrNil != nil {
+//                                //save failed
+//                                NSLog("Save failed, with error: %@", errorOrNil.localizedFailureReason!)
+//                            } else {
+//                                //save was successful
+//                                NSLog("Successfully saved event (id='%@').", (objectsOrNil[0] as! NSObject).kinveyObjectId())
+//                            }
+//                        },
+//                        withProgressBlock: nil
+//                    )
+//
+//                    var q1: KCSQuery!
+//                    q1 = KCSQuery(onField: "_id", usingConditional: .KCSIn, forValue: ["5660a5052458c6f60803493f"])
+//                    
+//                    store.queryWithQuery(
+//                        KCSQuery(),
+//                        withCompletionBlock: {
+//                            (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+//                            if errorOrNil == nil {
+//                                NSLog("successfully loaded objects: %@", objectsOrNil)
+//                                self.jobRoles = objectsOrNil
+//                                self.tblView .reloadData()
+//                                for var i = 0; i < self.jobRoles.count ; ++i {
+//                                    var jobrl: JobRole?
+//                                    jobrl = self.jobRoles[self.jobRoles.count-i-1] as! JobRole
+//                                    
+//                                    print(jobrl!.name)
+//                                    
+//                                   // var comments = jobrl!.comments
+////                                    if(jobrl!.fileInfo != nil){
+////                                        let _id = jobrl!.fileInfo["id"]
+////                                       
+////                                    print(jobrl?.fileInfo!._id)
+////                                    }
+////                                    
+////                                    for var j = 1; j < comments?.count; j++ {
+////                                        let commentDict = comments![j]
+////                                        
+////                                        let prof_id = commentDict["profile_id"]
+////                                        print("Profile_id is \(prof_id!)")
+////                                    }
+////                                    
+////                                    print(comments)
+//                                    
+//                                    
+//                                }
+//                            } else {
+//                                NSLog("error occurred: %@", errorOrNil)
+//                            }
+//                        },
+//                        withProgressBlock: nil
+//                    )
                     
 
                     
@@ -161,17 +199,97 @@ class ViewController: UIViewController {
         
     }
     
+   func deleteFile()
+   {
+    let IDs :[String] = ["",""];
+    
+    for ID in IDs {
+        print(ID)
+        KCSFileStore.downloadFile(ID, options: nil, completionBlock: { (pictures, error) in
+            if let pictures = pictures as? [KCSFile] {
+                for picture in pictures {
+                    print(picture)
+                }
+            }
+            }, progressBlock: nil)
+    }
+    
+//    KCSFileStore.deleteFile(
+//        "fcadf742-a897-41c0-b3b1-b280033a90b3",
+//        completionBlock: { (count: UInt, errorOrNil: NSError!) -> Void in
+//            
+//    }    )
+    }
+    
+    func fetchImages()
+    {
+        var skip: Int = 0
+        let query = KCSQuery()
+        query.limitModifer = KCSQueryLimitModifier(limit: 20)
+        //query.skipModifier = KCSQuerySkipModifier(count: 2)
+        //let query = KCSQuery(onField: "name", withExactMatchForValue: "Ronald")
+        let dataSort = KCSQuerySortModifier(field: KCSMetadataFieldLastModifiedTime, inDirection: KCSSortDirection.Descending)
+        query.addSortModifier(dataSort)
+        
+        KCSFileStore.downloadDataByQuery(query,
+                                         completionBlock: {
+                                            
+                                            (downloadedResources: [AnyObject]!, error: NSError!) -> Void in
+                                            
+//                                            guard error == nil else
+//                                            {
+//                                                print("Error")
+//                                                return
+//                                            }
+                                            guard downloadedResources.count > 0 else
+                                            {
+                                                print("No results")
+                                                //completion(status: "No results", fetchedImages: nil)
+                                                return
+                                            }
+                                           var images = [UIImage]()
+                                            for resource in downloadedResources
+                                            {
+                                                print("resource => \(resource)")
+                                                var file: KCSFile
+                                                file = resource as! KCSFile
+                                                var creationTime: NSDate? = nil
+                                                if file.metadata != nil
+                                                {
+                                                    creationTime = file.metadata.creationTime()
+                                                }
+                                                else
+                                                {
+                                                    print("file.metadata == nil\n")
+                                                }
+                                                
+                                               // let imgObj = UIImage(contentsOfFile: file.localURL.path!)
+                                                //let imgObj = UIImage(fileId: file.fileId,
+                                                //    imageData: file.data,
+                                                 //   creationDate: creationTime)
+                                                //images.append(imgObj)
+                                            }
+                                            
+                                           // skip += 8
+                                            //completion(status: "Success", fetchedImages: images)
+            },
+                                         progressBlock: nil
+        )
+    }
+    
     func downloadImage()
     {
-        let attrib = "texture1.png"
+        
+        
+        
+        
+        let attrib = "xyzzzzzz\\notes\\AFSASDA-ASDASDASD-ASDASDAD-ASDASDASDA-ASDASDADSA\\index.html"
         
         let pngQuery = KCSQuery(onField: KCSFileFileName, withExactMatchForValue: attrib as! NSObject)
         
+        KCSAppdataStore.storeWithOptions(<#T##options: [NSObject : AnyObject]!##[NSObject : AnyObject]!#>)
         
-        
-        
-        
-        KCSFileStore.downloadFileByQuery(pngQuery,
+        KCSFileStore.downloadData("2d65f25a-b149-424c-8666-e6dac8709881",
                                          requestConfiguration: nil,
                                          completionBlock: { (downloadedResources: [AnyObject]!, error: NSError!) -> Void in
                                             if error == nil {
@@ -182,11 +300,15 @@ class ViewController: UIViewController {
                                                 
                                                 let file = downloadedResources[0] as! KCSFile
                                                 
-                                                let fileURL = file.localURL
-                                                let image = UIImage(contentsOfFile: fileURL.path!)
+                                                //let fileURL = file.localURL
+                                                //let image = UIImage(contentsOfFile: fileURL.path!)
+                                                let image = UIImage(data: file.data!)
+                                                
                                                 
                                                 self.imgView2.image = image
-                                                print(file.localURL)
+                                                if let url = file.localURL {
+                                                    print(url)
+                                                }
                                                 
                                             } else {
                                                 print("Got an error: ", error)
@@ -194,7 +316,35 @@ class ViewController: UIViewController {
             },
                                          progressBlock: nil
         )
+
         
+        
+        
+        
+//        KCSFileStore.downloadFileByQuery(pngQuery,
+//                                         requestConfiguration: nil,
+//                                         completionBlock: { (downloadedResources: [AnyObject]!, error: NSError!) -> Void in
+//                                            if error == nil {
+//                                                
+//                                                
+//                                                //extract just the Value field from the entities
+//                                                
+//                                                
+//                                                let file = downloadedResources[0] as! KCSFile
+//                                                
+//                                                let fileURL = file.localURL
+//                                                let image = UIImage(contentsOfFile: fileURL.path!)
+//                                                
+//                                                self.imgView2.image = image
+//                                                print(file.localURL)
+//                                                
+//                                            } else {
+//                                                print("Got an error: ", error)
+//                                            }
+//            },
+//                                         progressBlock: nil
+//        )
+//        
         
     }
     
@@ -206,7 +356,7 @@ class ViewController: UIViewController {
         
         KCSFileStore.uploadData(data,
                                 options: [
-                                    KCSFileFileName : "texture1.png",
+                                    KCSFileFileName : "mtexture11.png",
                                     KCSFileMimeType : "image/png",
                                     
                                     
@@ -216,9 +366,88 @@ class ViewController: UIViewController {
                                     
                                     //self.assignProfilePictureIdToUser(KCSUser.activeUser(), picture: uploadInfo)
                                     self.uploadID = uploadInfo.kinveyObjectId()
-                                    //KCSUser.activeUser().setValue(uploadInfo.kinveyObjectId(), forAttribute: "usename")
+                                    KCSUser.activeUser().setValue(uploadInfo, forAttribute: "avatar2")
+                                    
+                                   // Entry created in "users" collection after persisting KCSFile object
+                                   // {
+                                   //     "_type": "KinveyFile",
+                                   //     "_id": "c456acfc-65fd-4a73-9f2f-ed0e990066e2"
+                                   // }
+                                    
+                                    KCSUser.activeUser().saveWithCompletionBlock({ (done: [AnyObject]!, error: NSError!) in
+                                        if error == nil
+                                        {
+                                            NSLog("Saved Avatar object")
+                                            
+                                            
+                                            let collection = KCSCollection(fromString: "Job-Roles", ofClass: JobRole.self)
+                                            let store = KCSAppdataStore(collection: collection, options: nil)
+                                            
+                                            
+                                            
+                                            let jobRole1 = JobRole()
+                                            jobRole1.name = "Manav44441111"
+                                            //jobRole1.date = nil
+                                            //jobRole1.fileInfo = nil
+                                            
+                                            let jobRole2 = JobRole()
+                                            jobRole2.name = "Manav33335555"
+                                            //jobRole2.date = NSDate()
+                                            //jobRole2.fileInfo = nil
+                                            
+                                            var arr: NSMutableArray? = []
+                                            arr!.addObject(jobRole1)
+                                            arr!.addObject(jobRole2)
+                                            
+                                            //jobRole1.data = arr;
+                                            
+//                                            var data =  try NSJSONSerialization.dataWithJSONObject(arr,options: NSJSONWritingOptions.PrettyPrinted)
+//                                            
+//                                            
+//                                            let jsonString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                                            
+                                            
+                                            store.saveObject(
+                                            arr!,
+                                                withCompletionBlock: { (objectsOrNil: [AnyObject]!, errorOrNil: NSError!) -> Void in
+                                                    if errorOrNil != nil {
+                                                        //save failed
+                                                        NSLog("Save failed, with error: %@", errorOrNil.localizedFailureReason!)
+                                                    } else {
+                                                        //save was successful
+                                                        NSLog("Successfully saved '%d objects.", (objectsOrNil.count))
+                                                    }
+                                                },
+                                                withProgressBlock: nil
+                                            )
+                                            
+                                            /* Entry created in Job-Roles collection after persisting KCSFile object
+                                             {
+                                                "_id": "c456acfc-65fd-4a73-9f2f-ed0e990066e2",
+                                                "_filename": "texture1.png",
+                                                "size": 7480,
+                                                "mimeType": "image/png",
+                                                "_acl": {
+                                                    "creator": "56fba1159120390e4c27452c"
+                                                },
+                                                "_kmd": {
+                                                    "lmt": "2016-04-21T23:13:25.095Z",
+                                                    "ect": "2016-04-21T23:13:25.095Z"
+                                                },
+                                                "_downloadURL": "http://storage.googleapis.com/3362266a446f4343a4a740f9b431df85/c456acfc-65fd-4a73-9f2f-ed0e990066e2/texture1.png?GoogleAccessId=558440376631@developer.gserviceaccount.com&Expires=1461289164&Signature=bPp20cxKD3bWZZHbymHTTa7PY8dC7ivBi3LOlVZrDaR2p2E28Y8ZMlkIRujk9EE1XtFH2ucB4Nzq1Sh8kPfrhxW9nOCOShmhmxesxdNV9P54FsblS4%2B6OdJO6mwPLjr7xnubmq9Vul%2BLYuzWya9DQxxY93fB01FU0qh95M414YE%3D",
+                                                "_expiresAt": "2016-04-22T01:39:24.435Z",
+                                                "_type": "KinveyFile"
+                                            }*/
+                                            
+                                            
+
+                                            
+                                        }
+                                    })
                                     
                                     
+                                    
+                                                                     
                                     self.downloadImage()
                                     
                                     
@@ -320,4 +549,66 @@ class ViewController: UIViewController {
 
 
 }
+
+
+func downloadImage()
+{
+    let attrib = "xyzzzzzz\\notes\\AFSASDA-ASDASDASD-ASDASDAD-ASDASDASDA-ASDASDADSA\\index.html"
+    
+    let pngQuery = KCSQuery(onField: KCSFileFileName, withExactMatchForValue: attrib as! NSObject)
+    
+    KCSFileStore.downloadFileByQuery(pngQuery,
+                                     requestConfiguration: nil,
+                                     completionBlock: { (downloadedResources: [AnyObject]!, error: NSError!) -> Void in
+                                        if error == nil {
+                                            
+                                            
+                                            //extract just the Value field from the entities
+                                            
+                                            
+                                            let file = downloadedResources[0] as! KCSFile
+                                            
+                                            let fileURL = file.localURL
+                                            let image = UIImage(contentsOfFile: fileURL.path!)
+                                            
+                                           // display this image in some UIImageView
+                                            print(file.localURL)
+                                            
+                                        } else {
+                                            print("Got an error: ", error)
+                                        }
+        },
+                                     progressBlock: nil
+    )
+    
+    
+}
+
+func uploadImage()
+{
+
+    let data = UIImageJPEGRepresentation(UIImage(named: "abcd.png")!,0.9) //convert to a 90% quality jpeg
+    
+    
+    KCSFileStore.uploadData(data,
+                            options: [
+                                KCSFileFileName : "xyzzzzzz\\notes\\AFSASDA-ASDASDASD-ASDASDAD-ASDASDASDA-ASDASDADSA\\index.html",
+                                KCSFileMimeType : "image/png",
+                                
+                                
+        ],
+                            completionBlock: { (uploadInfo: KCSFile!, error: NSError!) -> Void in
+                                
+                                // steps to do after successful image upload
+                                
+                                
+                                
+        },
+                            progressBlock: { (objects: [AnyObject]!, percentComplete: Double) -> Void in
+        }
+    )
+}
+
+
+
 

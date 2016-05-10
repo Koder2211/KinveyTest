@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         KCSClient.sharedClient().initializeKinveyServiceForAppKey(
             "kid_-Jii9oHxC",
-            withAppSecret: "a8ada55a94d741ca8f36356c57452763",
+            withAppSecret: "2cf210b11d53480f9aa87fb90e6822ee",
             usingOptions: nil
         )
         
@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KCSPing.pingKinveyWithBlock { (result: KCSPingResult!) -> Void in
             if result.pingWasSuccessful {
                 NSLog("Kinvey Ping Success")
-               // KCSPush.sharedPush().setPushBadgeNumber(100)
+                KCSPush.sharedPush().setPushBadgeNumber(101)
             } else {
                 NSLog("Kinvey Ping Failed")
             }
@@ -69,10 +69,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        print("Device token is \(deviceToken)")
         KCSPush.sharedPush().application(
             application,
             didRegisterForRemoteNotificationsWithDeviceToken: deviceToken,
             completionBlock: { (success: Bool, error: NSError!) -> Void in
+                print("RemoteNotification Error is \(error)")
                 //if there is an error, try again later
             }
         )
@@ -82,6 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KCSPush.sharedPush().application(application, didReceiveRemoteNotification: userInfo)
         // Additional push notification handling code should be performed here
     }
+    
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         KCSPush.sharedPush().application(application, didFailToRegisterForRemoteNotificationsWithError: error)
     }
@@ -96,4 +99,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+
 
