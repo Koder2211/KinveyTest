@@ -3,7 +3,7 @@
 //  TestKinvey
 //
 //  Created by Santosh Surve on 3/30/16.
-// Test this file
+// Test this file - with latest kinvey sdk
 //  Copyright © 2016 mindscrub. All rights reserved.
 //
 
